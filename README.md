@@ -122,4 +122,67 @@ PS C:\Users\PC\Documents\Git-Advanced-Trials>
 
 ```bash
 
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git add test5.md
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git commit -m "Implemented test5 file"
+[ft/branch 5a67f73] Implemented test5 file
+ 1 file changed, 1 insertion(+)
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git log ft/branch --oneline
+1ee4b46 (HEAD -> main, origin/main) first part of advanced git
+9589c96 chore: Create initial file and second file
+3f4d676 chore: Create third and fourth files
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git cherry-pick 5a67f73
+[main bac799e] Implemented test5 file
+ Date: Wed Mar 5 16:24:06 2025 +0200
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test5.md
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git log --oneline
+bac799e (HEAD -> main) Implemented test5 file
+1ee4b46 (origin/main) first part of advanced git
+9589c96 chore: Create initial file and second file
+3f4d676 chore: Create third and fourth files
+PS C:\Users\PC\Documents\Git-Advanced-Trials> cat test5.md
+This is test5.md file
+PS C:\Users\PC\Documents\Git-Advanced-Trials>
+
+```
+### Visualizing commit history
+```bash
+
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git log --graph
+* commit bac799e54243ff8d6636deab433ca3a7a95c1989 (HEAD -> main)
+| Author: Muhanguzi boss <bossmuhanguzi@gmail.com>
+| Date:   Wed Mar 5 16:24:06 2025 +0200
+|
+|     Implemented test5 file
+| 
+* commit 1ee4b469bb34472282d7315b07c4f3235c4dc362 (origin/main)
+| Author: Muhanguzi boss <bossmuhanguzi@gmail.com>
+| Date:   Tue Mar 4 22:28:19 2025 +0200
+|
+|     first part of advanced git
+|
+* commit 9589c9614976b1c5b3888b91b873403f928c29d8
+| Author: Muhanguzi boss <bossmuhanguzi@gmail.com>
+```
+
+### Understanding reflogs
+```bash
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git reflog
+bac799e (HEAD -> main) HEAD@{0}: cherry-pick: Implemented test5 file
+1ee4b46 (origin/main) HEAD@{1}: checkout: moving from ft/branch to main
+5a67f73 (ft/branch) HEAD@{2}: commit: Implemented test5 file
+1ee4b46 (origin/main) HEAD@{3}: checkout: moving from main to ft/branch
+1ee4b46 (origin/main) HEAD@{4}: commit: first part of advanced git
+9589c96 HEAD@{5}: rebase (finish): returning to refs/heads/main
+9589c96 HEAD@{6}: rebase (pick): chore: Create initial file and second file
+3f4d676 HEAD@{7}: rebase (pick): chore: Create third and fourth files
+25cf306 HEAD@{8}: rebase (start): checkout 25cf306fe6df345df5c0731fb6d6ce762d6f8ca4
+19d6bcb HEAD@{9}: rebase (finish): returning to refs/heads/main
+19d6bcb HEAD@{10}: rebase (start): checkout HEAD~2
+408ce30 HEAD@{11}: commit: Unwanted commit
+19d6bcb HEAD@{12}: rebase (finish): returning to refs/heads/main
+19d6bcb HEAD@{13}: rebase (squash): chore: Create third and fourth files
 ```
