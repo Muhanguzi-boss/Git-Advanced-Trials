@@ -186,3 +186,96 @@ bac799e (HEAD -> main) HEAD@{0}: cherry-pick: Implemented test5 file
 19d6bcb HEAD@{12}: rebase (finish): returning to refs/heads/main
 19d6bcb HEAD@{13}: rebase (squash): chore: Create third and fourth files
 ```
+
+
+## Part 2
+
+### Feature Branch Creation:
+```bash
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git checkout -b ft/new-feature
+Switched to a new branch 'ft/new-feature'
+PS C:\Users\PC\Documents\Git-Advanced-Trials> 
+```
+
+### Working on a feature branch
+```bash
+PS C:\Users\PC\Documents\Git-Advanced-Trials> New-Item feature.txt
+
+    Directory: C:\Users\PC\Documents\Git-Advanced-Trials
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          3/5/2025   5:07 PM              0 feature.txt
+
+
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git add feature.txt
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git commit -m "Implemented core functionality for new feature"
+[ft/new-feature f35476c] Implemented core functionality for new feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git log --oneline
+f35476c (HEAD -> ft/new-feature) Implemented core functionality for new feature
+d57d74d (origin/main, main) Last commits on part one
+bac799e Implemented test5 file
+1ee4b46 first part of advanced git
+9589c96 chore: Create initial file and second file
+3f4d676 chore: Create third and fourth files
+PS C:\Users\PC\Documents\Git-Advanced-Trials> 
+```
+### Switching Back and Making More Changes:
+```bash
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git checkout main
+Your branch is up to date with 'origin/main'.
+PS C:\Users\PC\Documents\Git-Advanced-Trials> New-Item readme.txt
+
+
+    Directory: C:\Users\PC\Documents\Git-Advanced-Trials
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----          3/5/2025   5:15 PM              0 readme.txt
+
+
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git add readme.txt
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git commit -m "Updated project readme"
+[main 367a108] Updated project readme
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+PS C:\Users\PC\Documents\Git-Advanced-Trials> 
+```
+
+### Renaming Branches
+```bash
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git branch -m ft/new-branch-from-commit ft/improved-branch-name  
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git branch
+  ft/branch
+  ft/improved-branch-name
+* main
+```
+### Checking Out Detached HEAD:
+```bash
+PS C:\Users\PC\Documents\Git-Advanced-Trials> git checkout 0513171
+M       README.md
+M       readme.txt
+Note: switching to '0513171'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 0513171 fifth and sixth sessions of part 2
+PS C:\Users\PC\Documents\Git-Advanced-Trials> 
+```
